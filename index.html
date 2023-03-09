@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        /**
+            CUSTOM SOLUTION:
+        */
+
+        // const n = 3;
+        // const baseLetter = "X";
+        // const baseSymbol = "_";
+
+        // const repeat = (str, times) => {
+        //     let result = "";
+        //     for(let i = 0; i < times; i += 1){
+        //         result += str;
+        //     }
+        //     return result;
+        // }
+
+        // const createBlockMatrix = (size) => {
+        //     if (size <= 1){
+        //         return [[baseLetter]];
+        //     }else{
+        //         const result = [];
+        //         for(let i = 0; i < size; i += 1){
+        //             const innerDimension = [];
+        //             for(let j = 0; j < size; j += 1){
+        //                 if (i === j){
+        //                     innerDimension.push(baseLetter);
+        //                 }else{
+        //                     innerDimension.push(baseSymbol);
+        //                 }
+        //             }
+        //             result.push(innerDimension);
+        //         }
+        //         return result;
+        //     }
+        // }
+
+        // const flipBlockMatrix = (matrix) => {
+        //     return matrix.map((innerMatrix) => {
+        //         return innerMatrix.map(v => v).reverse();
+        //     })
+        // }
+
+        // const concatMatrixBlock = (blockMatrix, flip, even) => {
+        //     let result = "";
+        //     const blockMatrixFlipped = flipBlockMatrix(blockMatrix);
+        //     const matrixLength = blockMatrix.length;
+        //     if (flip){
+        //         for(let i = 0; i < matrixLength; i += 1){
+        //             const innerBlockRow = blockMatrix[i];
+        //             const innerBlockFlippedRow = blockMatrixFlipped[i];
+        //             result += `${innerBlockFlippedRow.join("")}${even ? '': baseSymbol}${innerBlockRow.join("")}\n`;
+        //         }   
+        //     } else {
+        //         for(let i = 0; i < matrixLength; i += 1){
+        //             const innerBlockRow = blockMatrix[i];
+        //             const innerBlockFlippedRow = blockMatrixFlipped[i];
+        //             result += `${innerBlockRow.join("")}${even ? '': baseSymbol}${innerBlockFlippedRow.join("")}\n`;
+        //         }  
+        //     }
+        //     return result;
+        // }
+
+        // const printEvenMatrix = (blockMatrix) => {
+        //     const matrixLength = blockMatrix.length;
+        //     let result = "";
+        //     result +=  concatMatrixBlock(blockMatrix, false, true);
+        //     result +=  concatMatrixBlock(blockMatrix, true, true);
+        //     console.log(result);    
+
+        // }
+
+        // const printNotEvenMatrix = (blockMatrix) => {
+        //     const matrixLength = blockMatrix.length;
+        //     if (n === 1){
+        //         return console.log(baseLetter);  
+        //     }
+        //     let result = "";
+        //     result +=  concatMatrixBlock(blockMatrix, false, false);
+        //     result += `${repeat(baseSymbol, matrixLength)}${baseLetter}${repeat(baseSymbol, matrixLength)}\n`;
+        //     result +=  concatMatrixBlock(blockMatrix, true, false);
+        //     console.log(result);      
+        // }        
+
+
+        // const main = () => {
+        //     const isEven = n % 2 === 0;
+        //     const nHalf = n / 2;
+        //     if (isEven){
+        //         const blockMatrixSize = nHalf;
+        //         const blockMatrix = createBlockMatrix(blockMatrixSize);
+        //         printEvenMatrix(blockMatrix);                
+        //     } else {
+        //         const blockMatrixSize = Math.round(nHalf - 1);
+        //         const blockMatrix = createBlockMatrix(blockMatrixSize); 
+        //         printNotEvenMatrix(blockMatrix);
+        //     }
+        // }
+
+
+        // if (n !== 0) {
+        //     main();
+        // } else{
+        //     console.log('ERROR');
+        // }
+
+
+        /**
+            CHAT GPT solution:
+        */
+        function printPattern(n) {
+            if (n === 0) {
+                console.log("Error");
+                return;
+            }
+
+            for (let row = 1; row <= n; row++) {
+                let pattern = "";
+                for (let col = 1; col <= n; col++) {
+                    if (row === col || col === n - row + 1) {
+                        pattern += "X";
+                    } else {
+                        pattern += "_";
+                    }
+                }
+                console.log(pattern);
+            }
+        }
+        printPattern(1);
+
+
+    </script>
+</body>
+
+</html>
